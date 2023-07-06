@@ -35,13 +35,15 @@ interface Todo {
 const SingleFileUploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<number>(1);
+  const [selectedClass, setSelectedClass] = useState<string>("Boar");
 
   const [latitude, setLatitude] = useRecoilState(recoil_Latitude);
   const [longitude, setLongitude] = useRecoilState(recoil_Longitude);
 
   const onFileUploadChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //ファイル選択時に呼び出し
-    const fileInput = e.target; //eはイベントオブジェクト
+    // ファイル選択時に呼び出し
+    const fileInput = e.target; // eはイベントオブジェクト
 
     if (!fileInput.files) {
       alert("No file was chosen");
@@ -56,7 +58,7 @@ const SingleFileUploadForm = () => {
     const file = fileInput.files[0];
 
     if (!file.type.startsWith("image")) {
-      //アップされたファイルが画像かどうかを確認
+      // アップされたファイルが画像かどうかを確認
       alert("Please select a valid image");
       return;
     }
@@ -69,26 +71,26 @@ const SingleFileUploadForm = () => {
   };
 
   const onCancelFile = (e: MouseEvent<HTMLButtonElement>) => {
-    //キャンセルボタンを押した時に呼び出し
+    // キャンセルボタンを押した時に呼び出し
     e.preventDefault();
     if (!previewUrl && !file) {
       return;
     }
-    setFile(null); //ステートをnullにして画像選択を解除
+    setFile(null); // ステートをnullにして画像選択を解除
     setPreviewUrl(null);
   };
 
   const onUploadFile = async (e: MouseEvent<HTMLButtonElement>) => {
-    //アップロードボタンを押した時に呼び出し
+    // アップロードボタンを押した時に呼び出し
     e.preventDefault();
 
     if (!file) {
-      //ファイルが選択されてないときは処理を終了する
+      // ファイルが選択されてないときは処理を終了する
       return;
     }
 
     try {
-      //緯度経度取得
+      // 緯度経度取得
       let gpsData = await getExif(file);
       const gpsLatitude = gpsData.GPSlat;
       const gpsLongitude = gpsData.GPSlon;
@@ -100,10 +102,10 @@ const SingleFileUploadForm = () => {
       console.log("経度", gpsLongitude);
 
       var formData = new FormData();
-      formData.append("media", file); //選択されたデータをformDataに代入
+      formData.append("media", file); // 選択されたデータをformDataに代入
 
       const res = await fetch("/api/upload", {
-        //エンドポイントにファイルを送信
+        // エンドポイントにファイルを送信
         method: "POST",
         body: formData,
       });
@@ -125,10 +127,10 @@ const SingleFileUploadForm = () => {
 
       // Register latitude and longitude to Firebase
       const todo: Todo = {
-        class: "Boar", // Update with appropriate class value
+        class: selectedClass,
         latitude: gpsLatitude,
         longitude: gpsLongitude,
-        user: 1, // Update with appropriate user value
+        user: selectedUser,
       };
 
       const docRef = await addDoc(collection(firebaseConfig, "trace_DB"), todo);
@@ -200,6 +202,40 @@ const SingleFileUploadForm = () => {
             Upload file
           </button>
         </div>
+      </div>
+
+      <div className="mt-4">
+        <label className="block mb-1 font-medium">User:</label>
+        <select
+          value={selectedUser}
+          onChange={(e) => setSelectedUser(Number(e.target.value))}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+        >
+          <option value={1}>User 1</option>
+          <option value={2}>User 2</option>
+          <option value={3}>User 3</option>
+          <option value={4}>User 4</option>
+          <option value={5}>User 5</option>
+          <option value={6}>User 6</option>
+          <option value={7}>User 7</option>
+          <option value={8}>User 8</option>
+          <option value={9}>User 9</option>
+          <option value={10}>User 10</option>
+          {/* Add more options as needed */}
+        </select>
+      </div>
+
+      <div className="mt-4">
+        <label className="block mb-1 font-medium">Class:</label>
+        <select
+          value={selectedClass}
+          onChange={(e) => setSelectedClass(e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+        >
+          <option value="Boar">Boar</option>
+          <option value="Deer">Deer</option>
+          {/* Add more options as needed */}
+        </select>
       </div>
     </form>
   );
