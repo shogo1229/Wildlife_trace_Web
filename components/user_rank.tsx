@@ -44,14 +44,18 @@ const PointRank = () => {
 
   return (
     <div>
-      <h1>Point Rank</h1>
-      <ul>
-        {data.map((todo) => (
+      <h1>発見数ランキング</h1>
+      <ol>
+        {data.map((todo, index) => (
           <li key={todo.id}>
-            User ID: {todo.ID}, Point: {todo.point}
+            <span>{index + 1}位 </span>
+            <span>
+              User ID: {todo.ID}, Point: {todo.point}　
+            </span>
+            <a href={`/users/${todo.ID}`}> Profile</a>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };

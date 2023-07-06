@@ -13,41 +13,43 @@ const Home: NextPage = () => {
   console.log("index", latitude_data);
   console.log("index", longitude_data);
   return (
-    <div>
-      <Head>
-        <title>File uploader</title>
-        <meta name="description" content="File uploader" />
-      </Head>
+    <>
+      <div>
+        <Head>
+          <title>File uploader</title>
+          <meta name="description" content="File uploader" />
+        </Head>
 
-      <main className="py-10">
-        <div className="w-full max-w-3xl px-3 mx-auto">
-          <h1 className="mb-10 text-2xl font-bold text-gray-900">
-            Upload your wildlife trace photo
-          </h1>
+        <main className="py-10">
+          <div className="w-full max-w-3xl px-3 mx-auto">
+            <h1 className="mb-10 text-2xl font-bold text-gray-900">
+              Upload your wildlife trace photo
+            </h1>
 
-          <div className="space-y-10">
-            <div>
-              <NewImageUp />
-            </div>
-            <div>
-              <Map latitude={latitude_data} longitude={longitude_data} />
-            </div>
-            <div>
-              <MultiPIN_Map />
-            </div>
-            <div>
-              <PointRank />
+            <div className="space-y-10">
+              <div>
+                <NewImageUp />
+              </div>
+              <div>
+                <Map latitude={latitude_data} longitude={longitude_data} />
+              </div>
+              <div>
+                <MultiPIN_Map />
+              </div>
+              <div>
+                <PointRank />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      <footer>
-        <div className="w-full max-w-3xl px-3 mx-auto">
-          <p>This Area is Footer</p>
-        </div>
-      </footer>
-    </div>
+        <footer>
+          <div className="w-full max-w-3xl px-3 mx-auto">
+            <p>This Area is Footer</p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 };
 
