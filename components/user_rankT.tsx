@@ -51,6 +51,7 @@ const PointRank = () => {
   }, []);
 
   const getIcon = (point: number, index: number): StaticImageData => {
+    console.log(index);
     if (index === 0) {
       return icon1;
     } else if (index === 1) {
@@ -64,23 +65,17 @@ const PointRank = () => {
   };
 
   return (
-    <div className="container mx-auto py-6">
-      <h1 className="text-3xl font-bold mb-4">発見数ランキング</h1>
+    <div>
+      <h1>発見数ランキング</h1>
       <ol>
         {data.map((todo, index) => (
-          <li key={todo.id} className="flex items-center space-x-2 mb-2">
-            <span className="font-bold">{index + 1}位</span>
-            <Image
-              src={getIcon(todo.point, index)}
-              alt="Icon"
-              className="h-8 w-8 rounded-full"
-            />
+          <li key={todo.id}>
+            <span>{index + 1}位 </span>
+            <Image src={getIcon(todo.point, index)} alt="Icon" />
             <span>
-              User ID: {todo.ID}, Point: {todo.point}
+              User ID: {todo.ID}, Point: {todo.point}{" "}
             </span>
-            <a href={`/users/${todo.ID}`} className="ml-2 text-blue-500">
-              View Profile
-            </a>
+            <a href={`/users/${todo.ID}`}></a>
           </li>
         ))}
       </ol>
