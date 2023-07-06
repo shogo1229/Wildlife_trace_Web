@@ -24,9 +24,14 @@ const PointRank = () => {
             point: data.point,
           });
         });
-        console.log("outPut", arrList);
+
         // ソート
-        arrList.sort((a, b) => b.point - a.point);
+        arrList.sort((a, b) => {
+          if (a.point === b.point) {
+            return a.ID - b.ID; // pointが同じ場合はIDで比較
+          }
+          return b.point - a.point;
+        });
 
         setData(arrList);
       }

@@ -5,7 +5,8 @@ import { recoil_Latitude, recoil_Longitude } from "../lib/gps_state";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { collection, addDoc } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
-import { updatePoint } from "./DB_update";
+import { updatePoint } from "../lib/DB_update";
+import { updatePoint_class } from "../lib/DB_update_class";
 
 function getExif(imgFile: any): Promise<{ GPSlat: number; GPSlon: number }> {
   return new Promise((resolve, reject) => {
@@ -147,7 +148,9 @@ const SingleFileUploadForm = () => {
         user: selectedUser,
       };
 
-      updatePoint("wT2TGxkFD1paFAzds3Hc", 1);
+      //updatePoint(ids[selectedUser - 1], 1);
+      updatePoint_class(ids[selectedUser - 1], 1, selectedClass);
+      console.log("point up", ids[selectedUser - 1]);
 
       const docRef = await addDoc(collection(firebaseConfig, "trace_DB"), todo);
       console.log("Document written with ID: ", docRef.id);
