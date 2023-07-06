@@ -8,6 +8,7 @@ import icon4 from "../public/icons/rank4.png";
 import commonIcon from "../public/icons/Normal.jpg";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import UserInfo from "./users";
 
 interface Rank {
   id: string;
@@ -18,6 +19,7 @@ interface Rank {
 
 const PointRank = () => {
   const [data, setData] = useState<Rank[]>([]);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -63,6 +65,36 @@ const PointRank = () => {
     return commonIcon;
   };
 
+  const handleViewProfile = (userId: string) => {
+    setSelectedUserId(userId);
+  };
+
+  const closeModal = () => {
+    setSelectedUserId(null);
+  };
+
+  const UserProfileModal = ({ userId }: { userId: string }) => {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="modal-overlay fixed inset-0 bg-gray-800 opacity-75"></div>
+        <div className="modal-container bg-white w-64 rounded-lg shadow-lg z-10">
+          <div className="modal-content p-4">
+            <h2 className="text-xl font-bold mb-4">User Profile</h2>
+            <UserInfo userId={userId} />
+          </div>
+          <div className="modal-footer p-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-3xl font-bold mb-4">発見数ランキング</h1>
@@ -76,14 +108,20 @@ const PointRank = () => {
               className="h-8 w-8 rounded-full"
             />
             <span>
-              User ID: {todo.ID}, Point: {todo.point}
+              User ID: {todo.ID}, Point:{" "}
+              <span className="font-bold">{todo.point}</span>
             </span>
-            <a href={`/users/${todo.ID}`} className="ml-2 text-blue-500">
+            <a
+              href="#"
+              className="ml-2 text-blue-500"
+              onClick={() => handleViewProfile(todo.id)}
+            >
               View Profile
             </a>
           </li>
         ))}
       </ol>
+      {selectedUserId && <UserProfileModal userId={selectedUserId} />}
     </div>
   );
 };
