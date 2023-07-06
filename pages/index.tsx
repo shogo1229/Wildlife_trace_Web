@@ -1,13 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import SingleFileUploadForm from "../components/SingleUploadForm";
 import NewImageUp from "../components/NewImage_Upload";
 import Map from "../components/Map";
 import { recoil_Latitude, recoil_Longitude } from "../lib/gps_state";
 import { useRecoilState, useRecoilValue } from "recoil";
-import DBgetComponent from "../components/DB_get";
-import DBuploadComponent from "../components/DB_up";
 import MultiPIN_Map from "../components/multi_pin";
+import PointRank from "../components/user_rank";
 
 const Home: NextPage = () => {
   let latitude_data = useRecoilValue(recoil_Latitude);
@@ -38,7 +36,7 @@ const Home: NextPage = () => {
               <MultiPIN_Map />
             </div>
             <div>
-              <DBgetComponent />
+              <PointRank />
             </div>
           </div>
         </div>

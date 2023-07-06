@@ -5,6 +5,7 @@ import { recoil_Latitude, recoil_Longitude } from "../lib/gps_state";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { collection, addDoc } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
+import { updatePoint } from "./DB_update";
 
 function getExif(imgFile: any): Promise<{ GPSlat: number; GPSlon: number }> {
   return new Promise((resolve, reject) => {
@@ -31,6 +32,19 @@ interface Todo {
   longitude: number;
   user: number;
 }
+
+const ids: string[] = [
+  "wT2TGxkFD1paFAzds3Hc",
+  "Dwmxl46dRwKgIhr1z0MX",
+  "OfXljrtoWrpotokmFi9I",
+  "YqU8NcrhYM1OJHL5pWTy",
+  "EzGNtq6J1Ol8IS1JXa3n",
+  "JLLhrM362llbceaTsNgK",
+  "iUPHn0HV6ticUCtA9akY",
+  "AZx80DODuwiWgZpGEiUa",
+  "n0KU339J33SY7cCxIHIx",
+  "fensp7qOdOLnXzdanPCH",
+];
 
 const SingleFileUploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -132,6 +146,8 @@ const SingleFileUploadForm = () => {
         longitude: gpsLongitude,
         user: selectedUser,
       };
+
+      updatePoint("wT2TGxkFD1paFAzds3Hc", 1);
 
       const docRef = await addDoc(collection(firebaseConfig, "trace_DB"), todo);
       console.log("Document written with ID: ", docRef.id);
