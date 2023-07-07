@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
 import Image from "next/image";
-import boarIcon from "../public/icons/rank1.png";
-import deerIcon from "../public/icons/rank4.png";
-
+import Boar1icon from "../public/icons/Boar_rank1.jpg";
+import Boar2icon from "../public/icons/Boar_rank2.jpg";
+import Boar3icon from "../public/icons/Boar_rank3.jpg";
+import Boar4icon from "../public/icons/Boar_rank4.png";
+import Deer1icon from "../public/icons/Deer_rank1.jpg";
+import Deer2icon from "../public/icons/Deer_rank2.jpg";
+import Deer3icon from "../public/icons/Deer_rank3.jpg";
+import Deer4icon from "../public/icons/Deer_rank4.png";
 import rank1icon from "../public/icons/rank1.png";
 import rank2icon from "../public/icons/rank2.jpg";
 import rank3icon from "../public/icons/rank3.jpg";
@@ -72,7 +77,7 @@ const UserInfo = ({ userId }: Props) => {
         <h2 className="text-lg font-bold">RANK</h2>
         {user.point >= 0 && user.point <= 5 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
                 src={rank4icon}
                 alt="Boar Icon"
@@ -87,7 +92,7 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.point >= 6 && user.point <= 10 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
                 src={rank3icon}
                 alt="Boar Icon"
@@ -102,7 +107,7 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.point >= 11 && user.point <= 20 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
                 src={rank2icon}
                 alt="Boar Icon"
@@ -115,9 +120,9 @@ const UserInfo = ({ userId }: Props) => {
             </span>
           </div>
         )}
-        {user.point >= 20 && (
+        {user.point > 20 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
                 src={rank1icon}
                 alt="Boar Icon"
@@ -135,9 +140,9 @@ const UserInfo = ({ userId }: Props) => {
         <h2 className="text-lg font-bold">Badges</h2>
         {user.Boar_point >= 0 && user.Boar_point <= 3 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={boarIcon}
+                src={Boar4icon}
                 alt="Boar Icon"
                 layout="fill"
                 objectFit="contain"
@@ -150,9 +155,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Boar_point >= 4 && user.Boar_point <= 6 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={boarIcon}
+                src={Boar3icon}
                 alt="Boar Icon"
                 layout="fill"
                 objectFit="contain"
@@ -165,9 +170,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Boar_point >= 7 && user.Boar_point <= 10 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={boarIcon}
+                src={Boar2icon}
                 alt="Boar Icon"
                 layout="fill"
                 objectFit="contain"
@@ -180,9 +185,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Boar_point > 10 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={boarIcon}
+                src={Boar1icon}
                 alt="Boar Icon"
                 layout="fill"
                 objectFit="contain"
@@ -195,9 +200,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Deer_point >= 0 && user.Deer_point <= 3 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={deerIcon}
+                src={Deer4icon}
                 alt="Deer Icon"
                 layout="fill"
                 objectFit="contain"
@@ -210,9 +215,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Deer_point >= 4 && user.Deer_point <= 6 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={deerIcon}
+                src={Deer3icon}
                 alt="Deer Icon"
                 layout="fill"
                 objectFit="contain"
@@ -225,9 +230,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Deer_point >= 7 && user.Deer_point <= 10 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={deerIcon}
+                src={Deer2icon}
                 alt="Deer Icon"
                 layout="fill"
                 objectFit="contain"
@@ -240,9 +245,9 @@ const UserInfo = ({ userId }: Props) => {
         )}
         {user.Deer_point > 10 && (
           <div className="flex items-center mt-2">
-            <div className="w-16 h-16 relative">
+            <div className="w-48 h-24 relative">
               <Image
-                src={deerIcon}
+                src={Deer1icon}
                 alt="Deer Icon"
                 layout="fill"
                 objectFit="contain"

@@ -64,7 +64,7 @@ const PointRank = () => {
     return (
       <div className="fixed inset-0 flex items-center justify-center z-50">
         <div className="modal-overlay fixed inset-0 bg-gray-800 opacity-75"></div>
-        <div className="modal-container bg-white w-64 rounded-lg shadow-lg z-10">
+        <div className="modal-container bg-white w-128 rounded-lg shadow-lg z-10">
           <div className="modal-content p-4">
             <h2 className="text-xl font-bold mb-4">User Profile</h2>
             <UserInfo userId={userId} />
@@ -95,7 +95,7 @@ const PointRank = () => {
             <Image
               src={getIcon(todo.point, index)}
               alt="Icon"
-              className="h-8 w-8 rounded-full"
+              className="h-12 w-12 rounded-full"
             />
             <span>
               User ID: {todo.ID}, Point:{" "}
