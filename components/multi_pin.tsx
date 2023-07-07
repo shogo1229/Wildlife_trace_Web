@@ -19,7 +19,7 @@ const loadGoogleMapsAPI = () => {
     } else {
       const script = document.createElement("script");
       script.id = "google-maps-api";
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAIORL_apItyiqnoDPu4WRbnuBAmKV3WBM&libraries=places`;
       script.onload = resolve;
       script.onerror = reject;
       document.head.appendChild(script);

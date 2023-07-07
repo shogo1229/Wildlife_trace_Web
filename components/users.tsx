@@ -65,6 +65,51 @@ const UserInfo = ({ userId }: Props) => {
 
       <div className="mt-4 bg-white rounded-lg shadow p-4">
         <h2 className="text-lg font-bold">Badges</h2>
+        {user.Boar_point >= 0 && user.Boar_point <= 3 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={boarIcon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Boar Trace Beginner!!
+            </span>
+          </div>
+        )}
+        {user.Boar_point >= 4 && user.Boar_point <= 6 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={boarIcon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Boar Trace Amateur!!
+            </span>
+          </div>
+        )}
+        {user.Boar_point >= 7 && user.Boar_point <= 10 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={boarIcon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Boar Trace Professional!!
+            </span>
+          </div>
+        )}
         {user.Boar_point > 10 && (
           <div className="flex items-center mt-2">
             <div className="w-16 h-16 relative">
@@ -76,7 +121,52 @@ const UserInfo = ({ userId }: Props) => {
               />
             </div>
             <span className="ml-2 text-green-500 font-bold text-lg">
-              Boar Trace professor!!
+              Boar Trace MATAGI Master!!
+            </span>
+          </div>
+        )}
+        {user.Deer_point >= 0 && user.Deer_point <= 3 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={deerIcon}
+                alt="Deer Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Deer Trace Beginner!!
+            </span>
+          </div>
+        )}
+        {user.Deer_point >= 4 && user.Deer_point <= 6 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={deerIcon}
+                alt="Deer Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Deer Trace Amateur!!
+            </span>
+          </div>
+        )}
+        {user.Deer_point >= 7 && user.Deer_point <= 10 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={deerIcon}
+                alt="Deer Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Deer Trace Professional!!
             </span>
           </div>
         )}
@@ -91,7 +181,7 @@ const UserInfo = ({ userId }: Props) => {
               />
             </div>
             <span className="ml-2 text-green-500 font-bold text-lg">
-              Deer Trace professor!!
+              Deer Trace MATAGI Master!!
             </span>
           </div>
         )}

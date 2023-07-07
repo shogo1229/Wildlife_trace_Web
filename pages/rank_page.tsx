@@ -30,22 +30,10 @@ const PointRankPage = () => {
       </nav>
       <div>
         <main className="py-10">
-          <div className="w-full max-w-3xl px-3 mx-auto">
-            <h1 className="mb-10 text-2xl font-bold text-gray-900">
-              Point Rank Page
-            </h1>
-
-            <div>
-              <PointRank />
-            </div>
+          <div>
+            <PointRank />
           </div>
         </main>
-
-        <footer>
-          <div className="w-full max-w-3xl px-3 mx-auto">
-            <p>This Area is Footer</p>
-          </div>
-        </footer>
       </div>
     </>
   );

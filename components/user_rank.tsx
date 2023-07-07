@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
-import icon1 from "../public/icons/rank1.png";
-import icon2 from "../public/icons/rank2.jpg";
-import icon3 from "../public/icons/rank3.jpg";
-import icon4 from "../public/icons/rank4.png";
 import commonIcon from "../public/icons/Normal.jpg";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
@@ -53,15 +49,6 @@ const PointRank = () => {
   }, []);
 
   const getIcon = (point: number, index: number): StaticImageData => {
-    if (index === 0) {
-      return icon1;
-    } else if (index === 1) {
-      return icon2;
-    } else if (index === 2) {
-      return icon3;
-    } else if (index === 3) {
-      return icon4;
-    }
     return commonIcon;
   };
 
@@ -100,7 +87,10 @@ const PointRank = () => {
       <h1 className="text-3xl font-bold mb-4">発見数ランキング</h1>
       <ol>
         {data.map((todo, index) => (
-          <li key={todo.id} className="flex items-center space-x-2 mb-2">
+          <li
+            key={todo.id}
+            className="flex items-center space-x-2 mb-2 p-2 bg-white rounded shadow"
+          >
             <span className="font-bold">{index + 1}位</span>
             <Image
               src={getIcon(todo.point, index)}
@@ -113,10 +103,12 @@ const PointRank = () => {
             </span>
             <a
               href="#"
-              className="ml-2 text-blue-500"
+              className="ml-2 text-blue-500 hover:text-blue-700"
               onClick={() => handleViewProfile(todo.id)}
             >
-              View Profile
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
+                View Profile
+              </button>
             </a>
           </li>
         ))}
