@@ -16,15 +16,11 @@ const Home = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleMenuHover = () => {
-    setIsHovered(!isHovered);
-  };
-
   return (
     <>
       <div>
         <Head>
-          <title>File uploader</title>
+          <title>collecting wildlife Trace</title>
           <meta name="description" content="File uploader" />
         </Head>
 
@@ -34,21 +30,19 @@ const Home = () => {
               isHovered ? "animate-pulse" : ""
             }`}
             onClick={handleMenuToggle}
-            onMouseEnter={handleMenuHover}
-            onMouseLeave={handleMenuHover}
           >
             Menu
           </div>
           <div className={`w-64 bg-gray-800 ${menuOpen ? "block" : "hidden"}`}>
             <ul className="p-4">
               <li className="mb-2">
-                <Link href="/map_page">Map</Link>
+                <Link href="/map_page">Normal Map</Link>
               </li>
               <li className="mb-2">
-                <Link href="/multi_map_page">MultiPIN Map</Link>
+                <Link href="/multi_map_page">ALL Trace Map</Link>
               </li>
               <li>
-                <Link href="/rank_page">Point Rank</Link>
+                <Link href="/rank_page">User Ranking</Link>
               </li>
             </ul>
           </div>
@@ -57,7 +51,7 @@ const Home = () => {
         <main className="py-10">
           <div className="w-full max-w-3xl px-3 mx-auto">
             <h1 className="mb-10 text-2xl font-bold text-gray-900">
-              Upload your wildlife trace photo
+              Upload wildlife trace photo !!
             </h1>
 
             <div className="space-y-10">

@@ -24,10 +24,10 @@ const MapPage = () => {
               <Link href="/">Main Page</Link>
             </li>
             <li className="mb-2">
-              <Link href="/multi_map_page">MultiPIN Map</Link>
+              <Link href="/multi_map_page">ALL Trace Map</Link>
             </li>
             <li>
-              <Link href="/rank_page">Point Rank</Link>
+              <Link href="/rank_page">User Ranking</Link>
             </li>
           </ul>
         </div>
@@ -42,12 +42,6 @@ const MapPage = () => {
             </div>
           </div>
         </main>
-
-        <footer>
-          <div className="w-full max-w-3xl px-3 mx-auto">
-            <p>This Area is Footer</p>
-          </div>
-        </footer>
       </div>
     </>
   );

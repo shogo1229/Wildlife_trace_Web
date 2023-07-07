@@ -5,6 +5,11 @@ import Image from "next/image";
 import boarIcon from "../public/icons/rank1.png";
 import deerIcon from "../public/icons/rank4.png";
 
+import rank1icon from "../public/icons/rank1.png";
+import rank2icon from "../public/icons/rank2.jpg";
+import rank3icon from "../public/icons/rank3.jpg";
+import rank4icon from "../public/icons/rank4.png";
+
 interface Rank {
   id: string;
   ID: number;
@@ -64,6 +69,69 @@ const UserInfo = ({ userId }: Props) => {
       </div>
 
       <div className="mt-4 bg-white rounded-lg shadow p-4">
+        <h2 className="text-lg font-bold">RANK</h2>
+        {user.point >= 0 && user.point <= 5 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={rank4icon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-green-500 font-bold text-lg">
+              Assistant Professor LV1!!
+            </span>
+          </div>
+        )}
+        {user.point >= 6 && user.point <= 10 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={rank3icon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-yellow-400 font-bold text-lg">
+              Assistant Professor LV2!!
+            </span>
+          </div>
+        )}
+        {user.point >= 11 && user.point <= 20 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={rank2icon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-orange-500 font-bold text-lg">
+              Associate Professor !!
+            </span>
+          </div>
+        )}
+        {user.point >= 20 && (
+          <div className="flex items-center mt-2">
+            <div className="w-16 h-16 relative">
+              <Image
+                src={rank1icon}
+                alt="Boar Icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <span className="ml-2 text-red-500 font-bold text-lg">
+              Professor !!
+            </span>
+          </div>
+        )}
+      </div>
+      <div className="mt-4 bg-white rounded-lg shadow p-4">
         <h2 className="text-lg font-bold">Badges</h2>
         {user.Boar_point >= 0 && user.Boar_point <= 3 && (
           <div className="flex items-center mt-2">
@@ -90,7 +158,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-yellow-400 font-bold text-lg">
               Boar Trace Amateur!!
             </span>
           </div>
@@ -105,7 +173,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-orange-500 font-bold text-lg">
               Boar Trace Professional!!
             </span>
           </div>
@@ -120,7 +188,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-red-500 font-bold text-lg">
               Boar Trace MATAGI Master!!
             </span>
           </div>
@@ -150,7 +218,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-yellow-400 font-bold text-lg">
               Deer Trace Amateur!!
             </span>
           </div>
@@ -165,7 +233,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-orange-500 font-bold text-lg">
               Deer Trace Professional!!
             </span>
           </div>
@@ -180,7 +248,7 @@ const UserInfo = ({ userId }: Props) => {
                 objectFit="contain"
               />
             </div>
-            <span className="ml-2 text-green-500 font-bold text-lg">
+            <span className="ml-2 text-red-500 font-bold text-lg">
               Deer Trace MATAGI Master!!
             </span>
           </div>

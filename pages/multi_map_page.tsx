@@ -21,10 +21,10 @@ const MultiPinMapPage = () => {
                 <Link href="/">Main Page</Link>
               </li>
               <li className="mb-2">
-                <Link href="/map_page">Map</Link>
+                <Link href="/map_page">Normal Map</Link>
               </li>
               <li>
-                <Link href="/rank_page">Point Rank</Link>
+                <Link href="/rank_page">User Ranking</Link>
               </li>
             </ul>
           </div>
@@ -32,7 +32,7 @@ const MultiPinMapPage = () => {
         <main className="py-10">
           <div className="w-full max-w-3xl px-3 mx-auto">
             <h1 className="mb-10 text-2xl font-bold text-gray-900">
-              MultiPIN Map Page
+              All Trace Point MAP
             </h1>
 
             <div>
@@ -40,12 +40,6 @@ const MultiPinMapPage = () => {
             </div>
           </div>
         </main>
-
-        <footer>
-          <div className="w-full max-w-3xl px-3 mx-auto">
-            <p>This Area is Footer</p>
-          </div>
-        </footer>
       </div>
     </>
   );

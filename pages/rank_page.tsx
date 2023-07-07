@@ -20,10 +20,10 @@ const PointRankPage = () => {
               <Link href="/">Main Page</Link>
             </li>
             <li className="mb-2">
-              <Link href="/multi_map_page">MultiPIN Map</Link>
+              <Link href="/multi_map_page">ALL Trace Map</Link>
             </li>
             <li>
-              <Link href="/map_page">map</Link>
+              <Link href="/map_page">Normal MAP</Link>
             </li>
           </ul>
         </div>

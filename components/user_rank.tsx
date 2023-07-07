@@ -84,7 +84,7 @@ const PointRank = () => {
 
   return (
     <div className="container mx-auto py-6">
-      <h1 className="text-3xl font-bold mb-4">発見数ランキング</h1>
+      <h1 className="text-3xl font-bold mb-4">Trace Point Ranking !!</h1>
       <ol>
         {data.map((todo, index) => (
           <li
