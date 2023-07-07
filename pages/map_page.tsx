@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Map from "../components/Map";
+import User_multiMAP from "../components/user_multi_map";
 import { recoil_Latitude, recoil_Longitude } from "../lib/gps_state";
 import { useRecoilValue } from "recoil";
 import { useState } from "react";
@@ -38,7 +38,7 @@ const MapPage = () => {
             <h1 className="mb-10 text-2xl font-bold text-gray-900">Map Page</h1>
 
             <div>
-              <Map latitude={latitude_data} longitude={longitude_data} />
+              <User_multiMAP />
             </div>
           </div>
         </main>

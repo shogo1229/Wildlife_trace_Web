@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, SetStateAction } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
 import Image from "next/image";
@@ -21,7 +21,7 @@ const loadGoogleMapsAPI = () => {
     } else {
       const script = document.createElement("script");
       script.id = "google-maps-api";
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAIORL_apItyiqnoDPu4WRbnuBAmKV3WBM&libraries=places`;
       script.onload = resolve;
       script.onerror = reject;
       document.head.appendChild(script);
@@ -36,8 +36,8 @@ const MultiPIN_MAP = () => {
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
   const [selectedFilter, setSelectedFilter] = useState("all");
-  const handleFilterChange = (filter) => {
-    setSelectedFilter(filter);
+  const handleFilterChange = (filter: SetStateAction<string>) => {
+    setFilter(filter);
   };
 
   useEffect(() => {
