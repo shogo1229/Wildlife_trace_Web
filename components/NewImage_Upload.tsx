@@ -32,6 +32,7 @@ interface Todo {
   latitude: number;
   longitude: number;
   user: number;
+  imagePath: string; // Add imagePath field
 }
 
 const ids: string[] = [
@@ -140,12 +141,17 @@ const SingleFileUploadForm = () => {
         return;
       }
 
-      // Register latitude and longitude to Firebase
+      // Register latitude, longitude, and image path to Firebase
+      const imagePath = Array.isArray(data.url) ? data.url[0] : data.url;
+      const startIndex = imagePath.indexOf("\\uploads\\");
+      const formattedImagePath = imagePath.substring(startIndex);
+
       const todo: Todo = {
         class: selectedClass,
         latitude: gpsLatitude,
         longitude: gpsLongitude,
         user: selectedUser,
+        imagePath: formattedImagePath,
       };
 
       //updatePoint(ids[selectedUser - 1], 1);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import firebaseConfig from "../lib/firebase";
+import Image from "next/image";
 
 interface Todo {
   id: string;
@@ -8,6 +9,7 @@ interface Todo {
   latitude: number;
   longitude: number;
   user: number;
+  imagepath: string;
 }
 
 const loadGoogleMapsAPI = () => {
@@ -29,6 +31,10 @@ const loadGoogleMapsAPI = () => {
 
 const MultiPIN_MAP = () => {
   const [data, setData] = useState<Todo[]>([]);
+  const [selectedPin, setSelectedPin] = useState<Todo | null>(null);
+  const [infoWindow, setInfoWindow] = useState<google.maps.InfoWindow | null>(
+    null
+  );
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -43,6 +49,7 @@ const MultiPIN_MAP = () => {
             latitude: data.latitude,
             longitude: data.longitude,
             user: data.user,
+            imagepath: data.imagePath,
           });
         });
         setData(arrList);
@@ -78,12 +85,38 @@ const MultiPIN_MAP = () => {
             map: map,
             title: todo.class,
           });
+
+          // Add click event listener to the marker
+          marker.addListener("click", () => {
+            setSelectedPin(todo);
+            if (infoWindow) {
+              infoWindow.close();
+            }
+            const newInfoWindow = new window.google.maps.InfoWindow({
+              content: `
+                <div>
+                  <p>Latitude: ${todo.latitude}</p>
+                  <p>Longitude: ${todo.longitude}</p>
+                  <p>Class: ${todo.class}</p>
+                  <p>User: ${todo.user}</p>
+                  <p>path* ${todo.imagepath}</p>
+                  <img src="${todo.imagepath}" alt="Pin Image" width="250" height="250" />
+                </div>
+              `,
+            });
+            setInfoWindow(newInfoWindow);
+            newInfoWindow.open(map, marker);
+          });
         });
       }
     });
   }, [data]);
 
-  return <div id="map" style={{ height: "400px" }}></div>;
+  return (
+    <div>
+      <div id="map" style={{ height: "400px" }}></div>
+    </div>
+  );
 };
 
 export default MultiPIN_MAP;
