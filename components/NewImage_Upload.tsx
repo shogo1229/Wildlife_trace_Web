@@ -144,8 +144,9 @@ const SingleFileUploadForm = () => {
       }
 
       // Register latitude, longitude, and image path to Firebase
+      // Register latitude, longitude, and image path to Firebase
       const imagePath = Array.isArray(data.url) ? data.url[0] : data.url;
-      const startIndex = imagePath.indexOf("\\uploads\\");
+      const startIndex = imagePath.indexOf("/uploads");
       const formattedImagePath = imagePath.substring(startIndex);
 
       const todo: Todo = {

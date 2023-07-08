@@ -56,6 +56,7 @@ const MultiPIN_MAP = () => {
             imagepath: data.imagePath,
           });
         });
+        console.log(arrList[6]);
         setData(arrList);
       }
     );
