@@ -14,7 +14,9 @@ function getExif(imgFile: any): Promise<{ GPSlat: number; GPSlon: number }> {
       const exifData = imgFile.exifdata;
       const latitude = exifData?.GPSLatitude;
       const longitude = exifData?.GPSLongitude;
-
+      if (!latitude[0]) {
+        reject(new Error("緯度・経度情報が含まれていない画像ファイルです"));
+      }
       const GPSlat = latitude[0] / 1 + latitude[1] / 60 + latitude[2] / 3600;
       const GPSlon = longitude[0] / 1 + longitude[1] / 60 + longitude[2] / 3600;
 
